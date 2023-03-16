@@ -1,0 +1,17 @@
+{
+  "name": "dev-cluster",
+  "version": "1.0.0",
+  "description": "dev cluster",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-quickstart/eks-blueprints": "^1.5.4",
+    "aws-cdk": "^2.65.0",
+    "constructs": "^10.1.252"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
