@@ -12,3 +12,6 @@ import DevCluster from './cluster';
 new DevCluster().buildAsync(app, 'dev-cluster').catch(() => {
     logger.info("Error setting up dev cluster");
 });
+
+import { ECRRegistry } from './ecr';
+new ECRRegistry(app, 'dev-cluster-ecr');
