@@ -11,6 +11,7 @@ import * as eks from "aws-cdk-lib/aws-eks";
 import * as iam from "aws-cdk-lib/aws-iam";
 import { ECRRepository } from "./ecr";
 import { KubernetesVersion } from "aws-cdk-lib/aws-eks";
+import { DeployImagePullSecret } from "./pullsecret";
 
 //const burnhamManifestDir = './lib/teams/team-burnham/'
 //const rikerManifestDir = './lib/teams/team-riker/'
@@ -72,10 +73,10 @@ export default class DevCluster extends cdk.Stack {
         }),
         new blueprints.SecretsStoreAddOn({ rotationPollInterval: "120s" }),
         new blueprints.ClusterAutoScalerAddOn(),
+        new DeployImagePullSecret(),
         new blueprints.NestedStackAddOn({
           builder: ECRRepository.builder(),
-          id: "ecr-nested-stack",
-          nestedStackProps: {parameters: {ecrRepoNames: "api,vote,worker,result"}}
+          id: "ecr-nested-stack"
         })
       )
       .buildAsync(scope, `${id}`);
