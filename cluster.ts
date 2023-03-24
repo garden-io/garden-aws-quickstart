@@ -75,6 +75,7 @@ export default class DevCluster extends cdk.Stack {
         new blueprints.NestedStackAddOn({
           builder: ECRRepository.builder(),
           id: "ecr-nested-stack",
+          nestedStackProps: {parameters: {ecrRepoNames: "api,vote,worker,result"}}
         })
       )
       .buildAsync(scope, `${id}`);
