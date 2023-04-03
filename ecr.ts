@@ -19,12 +19,12 @@ export class ECRRepository extends cdk.NestedStack {
     this.ecrRepoNames = ["api", "vote", "worker", "result"]
     for (var repo of this.ecrRepoNames) {
       this.ecrRepos.push(new ecr.Repository(this, repo, {
-          repositoryName: repo,
+          repositoryName: `garden-demo/${repo}`,
           encryption: ecr.RepositoryEncryption.KMS,
           imageScanOnPush: true,
       }));
       this.ecrRepos.push(new ecr.Repository(this, `${repo}/cache`, {
-          repositoryName: `${repo}/cache`,
+          repositoryName: `garden-demo/${repo}/cache`,
           encryption: ecr.RepositoryEncryption.KMS,
           imageScanOnPush: true,
       }));
