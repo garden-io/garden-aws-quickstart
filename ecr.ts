@@ -23,11 +23,6 @@ export class ECRRepository extends cdk.NestedStack {
           encryption: ecr.RepositoryEncryption.KMS,
           imageScanOnPush: true,
       }));
-      this.ecrRepos.push(new ecr.Repository(this, `${repo}/cache`, {
-          repositoryName: `garden-demo/${repo}/cache`,
-          encryption: ecr.RepositoryEncryption.KMS,
-          imageScanOnPush: true,
-      }));
     }
   }
 }
