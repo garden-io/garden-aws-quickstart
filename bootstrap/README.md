@@ -13,13 +13,18 @@ This only needs to be executed once.
   - `dev-cluster/`: Files related to the dev-cluster CDK stack
     - `x.x.x/`: semver release directory
        - `<hash>.{json,zip}`: cdk asset created by synth
-       - `dev-cluster-quickstart.yaml`: CloudFormation stack synthesized from CDK code
 
-# How to run
+- `garden-cfn-public-releases/`
+  - `dev-cluster/`: Files related to the dev-cluster CDK stack
+    - `x.x.x/`: semver release directory
+       - `garden-dev-cluster.template.yaml`: CloudFormation stack synthesized from CDK code
+
+# How to create or update cfn stacks
 
 ```
-python3 -m venv venv
-source venv/bin/activate
-pip3 install boto3
+# Select the AWS marketplace account
+awsauth --switch
+
+# Apply the bootstrap CloudFormation template (regional-bootstrap.yaml) in all regions, and the global-bootstrap.yaml in eu-central-1
 python3 bootstrap.py
 ```

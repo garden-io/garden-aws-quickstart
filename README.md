@@ -1,15 +1,11 @@
 # Dev cluster on AWS via AWS CDK and Cloudformation
 
-## Steps to build and publish
+## Quick start
 
-```
-rm -rf cdk.out
-rm -rf cdk.out
-npx cdk synth
-AWS_REGION=eu-central-1 npx cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json
-rain fmt cdk.out/garden-dev-cluster.template.json > test.yaml
-```
-
+<!-- x-release-please-start-version -->
+- [Quick install](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?stackName=superwerker&templateURL=https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.0.0/garden-dev-cluster.template.yaml)
+- [View template](https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.0.0/garden-dev-cluster.template.yaml)
+<!-- x-release-please-end -->
 
 ## Inputs
 
