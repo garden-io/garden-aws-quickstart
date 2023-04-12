@@ -6,8 +6,8 @@
 rm -rf cdk.out
 rm -rf cdk.out
 npx cdk synth
-AWS_REGION=eu-central-1 npx cdk-assets publish -p cdk.out/steffen-dev-02-dev-cluster.assets.json
-rain fmt cdk.out/steffen-dev-02-dev-cluster.template.json > test.yaml
+AWS_REGION=eu-central-1 npx cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json
+rain fmt cdk.out/garden-dev-cluster.template.json > test.yaml
 ```
 
 
