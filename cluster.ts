@@ -12,14 +12,12 @@ import { KubernetesVersion } from "aws-cdk-lib/aws-eks";
 import { DeployImagePullSecret } from "./pullsecret";
 import { ArnPrincipal } from "aws-cdk-lib/aws-iam";
 
-const gitUrl = "https://github.com/aws-samples/eks-blueprints-workloads.git";
-
 const PARAMETER_SUBDOMAIN = "subdomain"
 const PARAMETER_HOSTEDZONEID = "hostedZoneId"
 /**
  * See docs/patterns/nginx.md for mode details on the setup.
  */
-export default class DevClusterConstruct {
+export class DevClusterConstruct {
   async eksCluster(scope: Construct, id: string) {
     // TODO
     const iamRoleArnCtx = "arn:aws:iam::123456789023:role/AWSReservedSSO_PlatformEngineers_4ed12acae0543"
@@ -75,12 +73,12 @@ export default class DevClusterConstruct {
       .buildAsync(scope, id);
 
       // add parameters
+      // TODO: is there a better approach to add parameters to the EKS blueprint CFN stack?
 
       new cdk.CfnParameter(cluster, PARAMETER_SUBDOMAIN, {
         type: "String",
         description: `
-          The subdomain that can be used for ingress to the development environments\
-          e.g. garden.mycompany.com. \
+          The subdomain that can be used for ingress to the development environments, e.g. garden.mycompany.com
           Needs to be a hosted domain in Route53RecordTarget.
         `
       });
