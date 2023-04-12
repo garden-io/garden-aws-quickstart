@@ -115,4 +115,4 @@ jobs:
         env:
           AWS_REGION: ${{ matrix.region }}
 
-      - run: s3cmd cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/${{ needs.release-please.outputs.release_version }}/garden-dev-cluster.template.yaml
+      - run: aws s3 cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/${{ needs.release-please.outputs.release_version }}/garden-dev-cluster.template.yaml
