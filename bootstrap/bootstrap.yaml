@@ -1,0 +1,29 @@
+# MIT Licensed
+# Copyright (c) 2021 superwerker
+# https://github.com/superwerker/superwerker/blob/b05f55e/cdk/cdk-bootstrap.yaml
+Resources:
+  BootStrapBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'garden-cfn-public-${AWS::Region}'
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+  BootStrapBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: BootStrapBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Principal:
+              AWS: "*"
+            Resource:
+              Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                      - BootStrapBucket
+                      - Arn
+                  - /*
+        Version: "2012-10-17"
