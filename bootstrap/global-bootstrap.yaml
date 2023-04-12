@@ -1,0 +1,74 @@
+# MIT Licensed
+# Copyright (c) 2021 superwerker
+# https://github.com/superwerker/superwerker/blob/b05f55e/cdk/cdk-bootstrap.yaml
+Resources:
+  GitHubOIDCRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated:
+                Fn::Join:
+                  - ""
+                  - - "arn:aws:iam::"
+                    - !Ref AWS::AccountId
+                    - ":oidc-provider/token.actions.githubusercontent.com"
+            Action:
+              - "sts:AssumeRoleWithWebIdentity"
+            Condition:
+              StringLike:
+                token.actions.githubusercontent.com:sub: repo:garden-io/dev-cluster:ref:refs/heads/main
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+      Path: /
+      Policies:
+        - PolicyName: github-action-workflow-cdk-release
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:PutObject"
+                  - "s3:GetObject"
+                  - "s3:GetObjectVersion"
+                  - "s3:AbortMultipartUpload"
+                  - "s3:ListMultipartUploadParts"
+                Resource:
+                  - "arn:aws:s3:::garden-cfn-public-*"
+                  - "arn:aws:s3:::garden-cfn-public-*/*"
+
+  ReleaseBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "garden-cfn-public-releases"
+      PublicAccessBlockConfiguration:
+        # Ignore ACLs as we do not need them. Do not fail if a tool sets ACLs.
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        # We want a public policy for GET requests (see below)
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+  ReleaseBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: ReleaseBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Principal:
+              AWS: "*"
+            Resource:
+              Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                      - ReleaseBucket
+                      - Arn
+                  - /*
+        Version: "2012-10-17"

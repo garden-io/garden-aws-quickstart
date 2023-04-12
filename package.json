@@ -1,17 +1,21 @@
 {
-  "name": "dev-cluster",
-  "version": "1.0.0",
-  "description": "dev cluster",
+  "name": "garden-dev-cluster",
+  "version": "0.0.0",
+  "description": "Garden development cluster CDK and CFN quickstart, batteries included.",
   "main": "index.js",
   "dependencies": {
     "@aws-quickstart/eks-blueprints": "=1.6.0",
     "aws-cdk-lib": "=2.66.1",
+    "cdk": "^2.73.0-alpha.0",
     "cdk-assets": "^2.73.0-alpha.0",
     "constructs": "=10.1.252"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "synth": "cdk synth",
+    "upload-assets": "cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Garden Technologies, Inc. <info@garden.io>",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/garden-io/dev-cluster"
 }
