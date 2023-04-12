@@ -1,0 +1,36 @@
+# MIT Licensed
+# Copyright (c) 2021 superwerker
+# https://github.com/superwerker/superwerker/blob/b05f55e/cdk/cdk-bootstrap.yaml
+Resources:
+  BootStrapBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'garden-cfn-public-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        # Ignore ACLs as we do not need them. Do not fail if a tool sets ACLs.
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        # We want a public policy for GET requests (see below)
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+  BootStrapBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: BootStrapBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Principal:
+              AWS: "*"
+            Resource:
+              Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                      - BootStrapBucket
+                      - Arn
+                  - /*
+        Version: "2012-10-17"
