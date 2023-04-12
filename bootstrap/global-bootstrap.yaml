@@ -2,6 +2,14 @@
 # Copyright (c) 2021 superwerker
 # https://github.com/superwerker/superwerker/blob/b05f55e/cdk/cdk-bootstrap.yaml
 Resources:
+  GitHubOIDCProvider:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+      ThumbprintList:
+        - 6938fd4d98bab03faadb97b34396831e3780aea1
   GitHubOIDCRole:
     Type: "AWS::IAM::Role"
     Properties:
