@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/garden-io/dev-cluster/compare/v0.1.1...v0.1.1) (2023-04-12)
+
+
+### Miscellaneous Chores
+
+* OIDC IAM s3 permissions ([#9](https://github.com/garden-io/dev-cluster/issues/9)) ([0e47489](https://github.com/garden-io/dev-cluster/commit/0e4748994ea854711f9c2aa51a7666c15b332044))
+
 ## [0.1.1](https://github.com/garden-io/dev-cluster/compare/v0.1.0...v0.1.1) (2023-04-12)
 
 
