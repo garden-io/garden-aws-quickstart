@@ -1,6 +1,6 @@
 {
   "name": "garden-dev-cluster",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Garden development cluster CDK and CFN quickstart, batteries included.",
   "main": "index.js",
   "dependencies": {

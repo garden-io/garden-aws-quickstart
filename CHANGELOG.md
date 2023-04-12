@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/garden-io/dev-cluster/compare/v0.1.0...v0.1.1) (2023-04-12)
+
+
+### Miscellaneous Chores
+
+* release 0.1.1 ([#7](https://github.com/garden-io/dev-cluster/issues/7)) ([7e86fb7](https://github.com/garden-io/dev-cluster/commit/7e86fb77023122641719aac21d3ab5c89832560d))
+
 ## 0.1.0 (2023-04-12)
 
 
