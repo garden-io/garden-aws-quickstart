@@ -1,9 +1,3 @@
 {
-    "app": "npx ts-node main.ts",
-    "context": {
-        "hostedZoneId": "Z028702323WOQ31QJAJJP",
-        "subdomainName": "dev.marketplace.sys.garden",
-        "iamUsers": "",
-        "iamRole": "arn:aws:sts::049586690729:assumed-role/AWSReservedSSO_AdministratorAccess_b3c1cae6dc09120a"
-    }
+    "app": "ts-node -P tsconfig.json --prefer-ts-exts src"
 }

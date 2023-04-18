@@ -2,20 +2,27 @@
   "name": "garden-dev-cluster",
   "version": "0.1.1",
   "description": "Garden development cluster CDK and CFN quickstart, batteries included.",
-  "main": "index.js",
+  "main": "src/index.ts",
   "dependencies": {
     "@aws-quickstart/eks-blueprints": "=1.6.0",
+    "@types/aws-lambda": "^8.10.114",
     "aws-cdk-lib": "=2.66.1",
+    "aws-lambda": "^1.0.7",
     "cdk": "^2.73.0-alpha.0",
     "cdk-assets": "^2.73.0-alpha.0",
     "constructs": "=10.1.252"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "synth": "cdk synth",
-    "upload-assets": "cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json"
+    "synth": "cdk synth eks-blueprint && cdk synth garden-dev-cluster",
+    "rain": "rain fmt cdk.out/eks-blueprint.template.json > eks-blueprint.template.yaml && rain fmt cdk.out/garden-dev-cluster.template.json > garden-dev-cluster.template.yaml",
+    "upload-assets": "cdk-assets publish -p cdk.out/eks-blueprint.assets.json && cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json",
+    "upload-templates": "aws s3 cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/$CDK_RELEASE_VERSION/garden-dev-cluster.template.yaml && aws s3 cp eks-blueprint.template.yaml s3://garden-cfn-public-releases/eks-blueprint/$CDK_RELEASE_VERSION/eks-blueprint.template.yaml"
   },
   "author": "Garden Technologies, Inc. <info@garden.io>",
   "license": "MPL-2.0",
-  "homepage": "https://github.com/garden-io/dev-cluster"
+  "homepage": "https://github.com/garden-io/dev-cluster",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
 }
