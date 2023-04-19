@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/garden-io/dev-cluster/compare/v0.1.1...v0.2.0) (2023-04-19)
+
+
+### Features
+
+* better structure and more parameters ([#12](https://github.com/garden-io/dev-cluster/issues/12)) ([f2c9d76](https://github.com/garden-io/dev-cluster/commit/f2c9d7696a7b0a583a65cfcbb31ca8ecf7f11ae2))
+
 ## [0.1.1](https://github.com/garden-io/dev-cluster/compare/v0.1.1...v0.1.1) (2023-04-12)
 
 
