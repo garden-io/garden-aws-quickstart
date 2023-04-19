@@ -37,8 +37,12 @@ jobs:
       - name: Setup Cloud Formation Formatter
         if: ${{ steps.release.outputs.release_created }}
         run: |
+          mkdir -p rain/bin
+          cd rain
           gh release download --repo aws-cloudformation/rain --pattern "*_linux-amd64.zip" --output "rain.zip"
-          unzip -j "rain.zip" "*/rain"
+          cd bin
+          unzip -j ../rain.zip "*/rain"
+          echo "$PWD" >> "$GITHUB_PATH"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -47,8 +51,7 @@ jobs:
         run: |
           npm install
           npm run synth
-          ./rain fmt cdk.out/garden-dev-cluster.template.json > garden-dev-cluster.template.yaml
-          cat garden-dev-cluster.template.yaml
+          npm run rain
         env:
           CDK_RELEASE_VERSION:  "${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
 
@@ -59,7 +62,7 @@ jobs:
           name: release-assets
           path: |
             cdk.out
-            garden-dev-cluster.template.yaml
+            *.template.yaml
 
   upload-assets:
     runs-on: ubuntu-latest
@@ -115,4 +118,9 @@ jobs:
         env:
           AWS_REGION: ${{ matrix.region }}
 
-      - run: aws s3 cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/${{ needs.release-please.outputs.release_version }}/garden-dev-cluster.template.yaml
+      - name: Publish the CloudFormation templates
+        if: ${{ matrix.region == 'eu-central-1' }}
+        run: |
+          npm run upload-templates
+        env:
+          CDK_RELEASE_VERSION: ${{ needs.release-please.outputs.release_version }}

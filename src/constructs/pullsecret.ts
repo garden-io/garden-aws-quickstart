@@ -18,7 +18,7 @@ export class DeployImagePullSecret implements ClusterAddOn {
                   [ecrURL]: "ecr-login"
             }
         }
-        const secret = cluster.addManifest("ECRSecret", {
+        cluster.addManifest("ECRSecret", {
             "apiVersion": "v1",
             "kind": "Secret",
             "type": "kubernetes.io/dockerconfigjson",
