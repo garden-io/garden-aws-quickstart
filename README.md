@@ -3,8 +3,8 @@
 ## Quick start
 
 <!-- x-release-please-start-version -->
-- [Quick install](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?stackName=garden-dev-cluster&templateURL=https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.1.1/garden-dev-cluster.template.yaml)
-- [View template](https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.1.1/garden-dev-cluster.template.yaml)
+- [Quick install](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?stackName=garden-dev-cluster&templateURL=https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.2.0/garden-dev-cluster.template.yaml)
+- [View template](https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.2.0/garden-dev-cluster.template.yaml)
 <!-- x-release-please-end -->
 
 ## Inputs
