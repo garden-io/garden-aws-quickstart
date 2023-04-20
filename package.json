@@ -14,10 +14,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "synth": "cdk synth eks-blueprint && cdk synth garden-dev-cluster",
-    "rain": "rain fmt cdk.out/eks-blueprint.template.json > eks-blueprint.template.yaml && rain fmt cdk.out/garden-dev-cluster.template.json > garden-dev-cluster.template.yaml",
-    "upload-assets": "cdk-assets publish -p cdk.out/eks-blueprint.assets.json && cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json",
-    "upload-templates": "aws s3 cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/$CDK_RELEASE_VERSION/garden-dev-cluster.template.yaml && aws s3 cp eks-blueprint.template.yaml s3://garden-cfn-public-releases/eks-blueprint/$CDK_RELEASE_VERSION/eks-blueprint.template.yaml"
+    "synth": "cdk synth garden-dev-cluster",
+    "rain": "rain fmt cdk.out/garden-dev-cluster.template.json > garden-dev-cluster.template.yaml",
+    "upload-assets": "cdk-assets publish -p cdk.out/garden-dev-cluster.assets.json",
+    "upload-templates": "aws s3 cp garden-dev-cluster.template.yaml s3://garden-cfn-public-releases/dev-cluster/$CDK_RELEASE_VERSION/garden-dev-cluster.template.yaml",
+    "cdk": "cdk",
+    "cdk-assets": "cdk-assets"
   },
   "author": "Garden Technologies, Inc. <info@garden.io>",
   "license": "MPL-2.0",
