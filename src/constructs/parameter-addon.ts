@@ -4,7 +4,7 @@ import * as cdk from "aws-cdk-lib";
 
 export interface ParameterAddonProps {
     readonly id: string
-    readonly properties: cdk.CfnParameterProps
+    readonly props: cdk.CfnParameterProps
 }
 
 export class ParameterAddOn implements ClusterAddOn {
@@ -15,7 +15,11 @@ export class ParameterAddOn implements ClusterAddOn {
     }
 
     deploy(clusterInfo: ClusterInfo): void {
-      new cdk.CfnParameter(cdk.Stack.of(clusterInfo.cluster), this.props.id, this.props.properties);
+      const contextDefault = clusterInfo.cluster.node.tryGetContext(this.props.id)
+      new cdk.CfnParameter(cdk.Stack.of(clusterInfo.cluster), this.props.id, {
+        ...this.props.props,
+        default: contextDefault === undefined ? this.props.props.default : contextDefault
+      });
     }
 
     get valueAsString(): string {

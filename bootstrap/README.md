@@ -13,17 +13,11 @@ This only needs to be executed once.
   - `dev-cluster/`: Files related to the garden-dev-cluster CDK stack
     - `x.x.x/`: semver release directory
        - `<hash>.{json,zip}`: cdk asset created by synth
-  - `eks-blueprint/`: Files related to the eks-blueprint CDK stack
-    - `x.x.x/`: semver release directory
-       - `<hash>.{json,zip}`: cdk asset created by synth
 
 - `garden-cfn-public-releases/`
   - `dev-cluster/`: Files related to the garden-dev-cluster CDK stack
     - `x.x.x/`: semver release directory
        - `garden-dev-cluster.template.yaml`: CloudFormation stack synthesized from CDK code
-  - `eks-blueprint/`: Files related to the eks-blueprint CDK stack
-      - `x.x.x/`: semver release directory
-        - `eks-blueprint.template.yaml`: CloudFormation stack synthesized from CDK code
 
 # How to create or update cfn stacks
 

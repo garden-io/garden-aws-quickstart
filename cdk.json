@@ -1,3 +1,24 @@
 {
-    "app": "ts-node -P tsconfig.json --prefer-ts-exts src"
+    "app": "ts-node -P tsconfig.json --prefer-ts-exts src",
+    "watch": {
+        "include": [
+        "src/**"
+        ]
+    },
+    "context": {
+        "GardenDevClusterStackID": "garden-dev-cluster",
+
+        "EKSClusterName": "garden-dev-cluster",
+        "EKSNodeGroupMinSize": 1,
+        "EKSNodeGroupMaxSize": 10,
+
+        "ECRRepositories": "api,result,vote,worker",
+        "ECRPrefix": "garden-dev-cluster",
+
+        "IAMEKSFullAccessRole": "",
+        "IAMEKSFullAccessPrincipals": "",
+
+        "IngressSubdomain": "",
+        "IngressRoute53HostedZoneId": ""
+    }
 }

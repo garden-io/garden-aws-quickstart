@@ -10,7 +10,7 @@ import { PROP_REPOSITORIES, PROP_PREFIX } from '../functions/ecr-repositories';
 interface ECRRepositoriesProps {
   /**
    * List of ECR repository names.
-   * 
+   *
    * Each name will be prefixed, e.g. testservice will become garden-dev/testservice if prefix is garden-dev.
    */
   readonly names: string[];
