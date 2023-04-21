@@ -3,9 +3,10 @@ import * as AWSCDKAsyncCustomResource from 'aws-cdk-lib/custom-resources/lib/pro
 
 export const PROP_VPC_ID = "vpcID"
 
-const elb = new AWS.ELB()
+const elb = new AWS.ELBv2()
 
 export async function handler(event: AWSCDKAsyncCustomResource.OnEventRequest): Promise<AWSCDKAsyncCustomResource.OnEventResponse> {
+  console.info(`EVENT: ${JSON.stringify(event)}`)
   const vpcID: string = event.ResourceProperties[PROP_VPC_ID]
 
     switch (event.RequestType) {
@@ -18,21 +19,25 @@ export async function handler(event: AWSCDKAsyncCustomResource.OnEventRequest): 
       case 'Delete':
         const lbs = await elb.describeLoadBalancers().promise()
 
-        const matchingLBs = lbs.LoadBalancerDescriptions
-          ?.filter((i) => i.VPCId === vpcID)
-          // look for clues that we actually created this LB
-          .filter((i) => i.LoadBalancerName?.includes("k8s") && i.LoadBalancerName?.includes("kubesys") && i.LoadBalancerName?.includes("blueprin"))
+        console.info(`Found ${lbs.LoadBalancers?.length} LBs`)
 
+        const inVPC = lbs.LoadBalancers
+        ?.filter((i) => i.VpcId === vpcID)
+        .map((i) => i.LoadBalancerArn)
 
-        if (!matchingLBs) {
+        console.info(`In VPC: ${JSON.stringify(inVPC)}`)
+
+        if (!inVPC) {
           return {}
         }
 
-        for (const i of matchingLBs) {
-          if (i.LoadBalancerName) {
+        for (const arn of inVPC) {
+          if (arn) {
+            console.info(`Deleting LB ${arn}`)
             await elb.deleteLoadBalancer({
-              LoadBalancerName: i.LoadBalancerName
+              LoadBalancerArn: arn
             }).promise()
+            console.info(`Successfully deleted LB ${arn}`)
           }
         }
 

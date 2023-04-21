@@ -178,8 +178,8 @@ export class GardenEKSDevCluster {
       .resourceProvider(
         GlobalResources.Certificate,
         new blueprints.CreateCertificateProvider(
-          "wildcard-cert",
-          cdk.Fn.join(".", ["*", parameters.subdomain]),
+          "garden-devcluster-ingress-wildcard",
+          `*.${parameters.subdomain}`,
           GlobalResources.HostedZone
         )
       )

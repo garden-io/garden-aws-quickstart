@@ -4,8 +4,6 @@ import { logger } from "@aws-quickstart/eks-blueprints/dist/utils";
 
 const app = new cdk.App();
 
-// Garden Dev cluster
-
 new GardenEKSDevCluster().build(app, {
   synthesizer: getSynthesizer("dev-cluster"),
 }).catch((e) => {

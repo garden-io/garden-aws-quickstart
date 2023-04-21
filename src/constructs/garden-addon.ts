@@ -49,9 +49,8 @@ export class GardenAddOn implements ClusterAddOn {
 
   private addCleanupLBHack(clusterInfo: ClusterInfo) {
     new EKSCleanupLB(clusterInfo.cluster, "GardenEKSCleanupLB", {
-      vpcId: clusterInfo.cluster.vpc.vpcId
+      vpcId: clusterInfo.cluster.vpc.vpcId,
     })
-    clusterInfo.cluster.addHelmChart
   }
 
   private createECRRepositories(clusterInfo: ClusterInfo) {
