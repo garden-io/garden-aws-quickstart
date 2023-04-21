@@ -35,7 +35,7 @@ export class GardenAddOn implements ClusterAddOn {
     // ensures that in-cluster builder can push images to any ECR registries in the same account,
     // as well as that Kubernetes Nodes can pull images from ECR
     this.deployImagePullSecret(clusterInfo)
-    this.addRegistryAccessRole(clusterInfo)
+    this.addRegistryAccessPolicy(clusterInfo)
 
     // create ECR repositories
     this.createECRRepositories(clusterInfo)
@@ -95,7 +95,7 @@ export class GardenAddOn implements ClusterAddOn {
     principalsAccessRole.cfnOptions.condition = shouldCreateIAMRole
   }
 
-  private addRegistryAccessRole(clusterInfo: ClusterInfo): void {
+  private addRegistryAccessPolicy(clusterInfo: ClusterInfo): void {
     // This allows the nodes to push to AWS registry
     // TODO: Use IRSA once Garden in-cluster-builder supports it
     // TODO: At least limit it to the repostories that belong to this stack
