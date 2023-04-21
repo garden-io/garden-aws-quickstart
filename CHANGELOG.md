@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/garden-io/dev-cluster/compare/v0.2.0...v0.3.0) (2023-04-21)
+
+
+### Features
+
+* loadbalancer cleanup on delete & improved structure ([#14](https://github.com/garden-io/dev-cluster/issues/14)) ([dfcee19](https://github.com/garden-io/dev-cluster/commit/dfcee19335bdacaea153ed453387b3e87aa2d341))
+
 ## [0.2.0](https://github.com/garden-io/dev-cluster/compare/v0.1.1...v0.2.0) (2023-04-19)
 
 
