@@ -5,12 +5,15 @@
   "main": "src/index.ts",
   "dependencies": {
     "@aws-quickstart/eks-blueprints": "=1.6.0",
+    "@segment/analytics-node": "^1.0.0-beta.26",
     "@types/aws-lambda": "^8.10.114",
     "aws-cdk-lib": "=2.66.1",
     "aws-lambda": "^1.0.7",
     "cdk": "^2.73.0-alpha.0",
     "cdk-assets": "^2.73.0-alpha.0",
-    "constructs": "=10.1.252"
+    "constructs": "=10.1.252",
+    "hasha": "^5.2.2",
+    "pjson": "^1.0.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,6 +28,7 @@
   "license": "MPL-2.0",
   "homepage": "https://github.com/garden-io/dev-cluster",
   "devDependencies": {
+    "@types/analytics-node": "^3.1.11",
     "ts-node": "^10.9.1"
   }
 }

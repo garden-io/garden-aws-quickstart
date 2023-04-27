@@ -54,6 +54,7 @@ jobs:
           npm run rain
         env:
           CDK_RELEASE_VERSION:  "${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
+          CDK_ENVIRONMENT: prod
 
       - name: Archive release assets
         if: ${{ steps.release.outputs.release_created }}
