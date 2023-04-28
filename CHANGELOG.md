@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/garden-io/dev-cluster/compare/v0.3.0...v0.3.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* remove unneeded code ([#16](https://github.com/garden-io/dev-cluster/issues/16)) ([e20c16b](https://github.com/garden-io/dev-cluster/commit/e20c16bb661152087e18acea899f54203cb43ae0))
+
 ## [0.3.0](https://github.com/garden-io/dev-cluster/compare/v0.2.0...v0.3.0) (2023-04-21)
 
 
