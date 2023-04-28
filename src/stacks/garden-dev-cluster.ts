@@ -144,9 +144,6 @@ export class GardenEKSDevCluster {
       parameters,
     })
 
-    // TODO: Document why
-    blueprints.HelmAddOn.validateHelmVersions = false
-
     // hack to skip validation of managed node groups, as the values are only tokens during synthetisation
     blueprints.GenericClusterProvider.prototype["validateInput"] = () => {}
 
