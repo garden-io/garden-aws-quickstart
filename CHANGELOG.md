@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/garden-io/dev-cluster/compare/v0.3.1...v0.4.0) (2023-06-01)
+
+
+### Features
+
+* Add tracking and update cdk for security fixes ([#18](https://github.com/garden-io/dev-cluster/issues/18)) ([f25b2c8](https://github.com/garden-io/dev-cluster/commit/f25b2c8eedfab7a74ffadd3339216f31d874e988))
+
 ## [0.3.1](https://github.com/garden-io/dev-cluster/compare/v0.3.0...v0.3.1) (2023-04-28)
 
 
