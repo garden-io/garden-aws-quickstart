@@ -3,7 +3,9 @@ import * as iam from "aws-cdk-lib/aws-iam";
 import * as cdk from "aws-cdk-lib";
 import { ECRRepositories } from "./ecr-repositories";
 import { EKSCleanupLB } from "./eks-cleanuplb";
+import { TrackUsage } from "./tracking";
 import { GardenEKSDevCluster } from "../stacks/garden-dev-cluster";
+var pjson = require("pjson");
 
 export interface GardenAddOnProps {
   readonly accountId: string
@@ -45,6 +47,9 @@ export class GardenAddOn implements ClusterAddOn {
 
     // fix cluster deletion
     this.addCleanupLBHack(clusterInfo)
+
+    //track usage
+    this.trackUsage(clusterInfo)
   }
 
   private addCleanupLBHack(clusterInfo: ClusterInfo) {
@@ -61,6 +66,15 @@ export class GardenAddOn implements ClusterAddOn {
     new ECRRepositories(cluster, "GardenCustomECRRepositories", {
       names: parameters.ecrRepoNames,
       prefix: parameters.ecrPrefix
+    })
+  }
+
+  private trackUsage(clusterInfo: ClusterInfo) {
+    const cluster = clusterInfo.cluster
+    new TrackUsage(cluster, "TrackUsage", {
+      account: this.props.accountId,
+      stackVersion: pjson.version,
+      parameters: this.props.parameters
     })
   }
 

@@ -24,11 +24,13 @@ export async function handler(event: AWSCDKAsyncCustomResource.OnEventRequest): 
 
         // get deleted repos
         for (const repo of oldRepos.filter((r) => !newRepos.includes(r))) {
+          console.log(`deleting repo ${prefix}/${repo}`)
           await deleteRepo(prefix, repo)
         }
 
         for (const repo of newRepos.filter((r) => !oldRepos.includes(r))) {
-          createRepo(prefix, repo)
+          console.log(`creating repo ${prefix}/${repo}`)
+          await createRepo(prefix, repo)
         }
         return {}
 

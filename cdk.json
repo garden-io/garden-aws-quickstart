@@ -7,18 +7,20 @@
     },
     "context": {
         "GardenDevClusterStackID": "garden-dev-cluster",
-
         "EKSClusterName": "garden-dev-cluster",
         "EKSNodeGroupMinSize": 1,
         "EKSNodeGroupMaxSize": 10,
-
         "ECRRepositories": "api,result,vote,worker",
         "ECRPrefix": "garden-dev-cluster",
-
         "IAMEKSFullAccessRole": "",
         "IAMEKSFullAccessPrincipals": "",
-
         "IngressSubdomain": "",
-        "IngressRoute53HostedZoneId": ""
+        "IngressRoute53HostedZoneId": "",
+        "dev": {
+            "SegmentAPIWriteKey": "7f9LMF7SUiOJHp1DKGGMTWAsMQVATmga"
+        },
+        "prod": {
+            "SegmentAPIWriteKey": "n28eGgbHFaNYAUe09O0j29hYOXhsCYj7"
+        }
     }
 }
