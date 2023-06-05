@@ -7,6 +7,10 @@
 - **Access management:** Easily grant access to your development teams, so they can use remote production-like dev environments and see changes reflected instantly with [Garden sync mode](https://docs.garden.io/guides/code-synchronization).  This  will make the remote development environment feel like running your set of services locally.
 - **Batteries included:** Also takes care of Load Balancing, Ingress controller, SSL certificates and Route53 supporting any number of development environments right away. The EKS cluster comes already with all necessary IAM permissions preconfigured that Garden needs to function.
 
+## High-level architecture overview
+
+![plot](./Architecture_diagram_dev_cluster.png)
+
 ## Quick start
 
 After completing the following steps, you will have deployed your dev environment for the [Garden quick-start example](https://github.com/garden-io/quickstart-example) to your Garden Development Cluster on AWS.
