@@ -28,50 +28,32 @@ Follow the link to the [Quick install](https://console.aws.amazon.com/cloudforma
 <!-- x-release-please-end -->
 
 #### Parameters
-##### ECRPrefix
-Prefix of ECR repositories specified in `ECRRepositories`.
 
-For example, for the prefix `garden-dev-cluster` and the repositories `api,worker`, then the ECR repositories named `garden-dev-cluster/api` and `garden-dev-cluster/worker` will be created.
+Please refer to the [parameters reference](docs/reference/parameters.md) for a description of all parameters.
 
-If you want to deploy the [Garden quick-start example](https://github.com/garden-io/quickstart-example), keep the default value.
+The following parameters will need to be configured to launch the quickstart guide. You can keep the default value for all other parameters.
 
-##### ECRRepositories
-ECR repositories to create. 
-
-For example, for the prefix `garden-dev-cluster` and the repositories `api,worker`, then the ECR repositories named `garden-dev-cluster/api` and `garden-dev-cluster/worker` will be created.
-
-##### EKSClusterName
-The name of the EKS cluster. You can choose any name you like.
-
-##### EKSNodeGroupMaxSize
-Maximum number of nodes in your EKS cluster. To disable auto scaling, set minimum and maximum size to the same value.
-
-##### EKSNodeGroupMinSize
-Minimum number of nodes in your EKS cluster. To disable auto scaling, set minimum and maximum size to the same value.
-
-##### IAMEKSFullAccessPrincipals
+##### `IAMEKSFullAccessPrincipals`
 List of ARN principals, like IAM users or roles, that should be allowed to assume the role to get access to the EKS cluster. Mutually exclusive with the `IAMEKSFullAccessRole` parameter. You must either supply an `IAMEKSFullAccessRole` parameter, or `IAMEKSFullAccessPrincipals`, but not both.
 
-##### IAMEKSFullAccessRole
+Example: `arn:aws:iam::001122334455:group/Developers`
+
+##### `IAMEKSFullAccessRole`
 The ARN of the IAM role that gets access to the EKS cluster. Everyone who can assume this role will have full access to the EKS cluster created in this stack. You are responsible for managing the trust policy of this role and allow users to assume it. Mutually exclusive with `IAMEKSFullAccessPrincipals` parameter. You must either supply an `IAMEKSFullAccessRole` parameter, or `IAMEKSFullAccessPrincipals`, but not both.
 
 In case you are using AWS Single Sign On (also known as AWS Identity Center) you will want to specify the `AWSReservedSSO` role that your development teams can assume in `IAMEKSFullAccessRole`.
 
-##### IngressRoute53HostedZoneId
+Example: `arn:aws:iam::001122334455:role/AWSReservedSSO_DeveloperAccess_xxxxxxxx`
+
+##### `IngressRoute53HostedZoneId`
 The ID of the Route53 hosted zone with the domain that can be used for ingress to the development environments
 
 Use the drop down to choose the hosted zone ID that hosts the domain chosen in [step 1 (DNS Setup)](#1-dns-setup).
 
-##### IngressRoute53HostedZoneId
-The subdomain that can be used for ingress to the development environments, e.g. `garden.mycompany.com`
-
-Needs to be a hosted domain in `Route53RecordTarget`.
+##### `IngressRoute53HostedZoneId`
+The subdomain that can be used for ingress to the development environments. Needs to be a hosted domain in `Route53RecordTarget`, for example: `garden.mycompany.com`.
 
 Enter the domain chosen in [step 1 (DNS Setup)](#1-dns-setup).
-
-
-
-Enter the domain chosen in step 1 (DNS Setup).
 
 ### 3. Deploy the quickstart-example
 1. `git clone https://github.com/garden-io/quickstart-example.git`
