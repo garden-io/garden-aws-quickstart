@@ -61,3 +61,9 @@ Enter the domain chosen in [step 1 (DNS Setup)](#1-dns-setup).
 3. TODO: Update configuration
 4. `garden dev`
 5. `> deploy --sync`
+
+## Telemetry
+
+When launching, updating or deleting the CloudFormation Stack we collect anonymized telemetry and send it to Segment.io. It helps us understand how our users use Garden and aids our decision process when prioritizing new features, bug fixing, etc.
+
+We put great effort in making sure we only collect completely anonymized data: We use random generated UUIDs for identifying users and we hash sensitive information using SHA-512. See also the implementation at [`src/functions/tracking.ts`](src/functions/tracking.ts).
