@@ -1,6 +1,6 @@
 # Garden Development Cluster Solution for AWS
 
-# Features
+## Features
 - **Remote development:** Use an Amazon EKS cluster as a remote development environment for your engineering team, as well as for CI and QA environments.
 - **Fast builds:** Save precious engineering time wasted waiting for container builds by using the [in-cluster-building](https://docs.garden.io/kubernetes-plugins/advanced/in-cluster-building) and [build caching](https://docs.garden.io/basics/how-garden-works#caching) features. Your container images will be stored in AWS ECR repositories.
 - **Autoscaling:** Control the minimum and maximum number of nodes in the cluster, to support your Engineering team size and workload requirements
