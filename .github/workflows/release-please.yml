@@ -110,7 +110,7 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@e1e17a757e536f70e52b5a12b2e8d1d1c60e04ef # 2.0.0
         with:
-          role-to-assume: ${secrets.AWS_ROLE}
+          role-to-assume: ${{ secrets.AWS_ROLE }}
           role-session-name: github-action-dev-cluster-cdk-release
           aws-region: ${{ matrix.region }}
 
