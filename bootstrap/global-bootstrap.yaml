@@ -25,7 +25,7 @@ Resources:
               - "sts:AssumeRoleWithWebIdentity"
             Condition:
               StringLike:
-                token.actions.githubusercontent.com:sub: repo:garden-io/dev-cluster:ref:refs/heads/main
+                token.actions.githubusercontent.com:sub: repo:garden-io/garden-aws-quickstart:ref:refs/heads/main
               StringEquals:
                 token.actions.githubusercontent.com:aud: sts.amazonaws.com
       Path: /
