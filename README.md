@@ -27,8 +27,8 @@ If this DNS name is not already hosted on AWS Route 53, you need to [create a ho
 
 Now you can deploy the solution using AWS CloudFormation. 
 
-<!-- x-release-please-start -->
-Follow the link to the [Quick install](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?stackName=garden-dev-cluster&templateURL=https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.4.0/garden-dev-cluster.template.yaml) template ([View Template Source](https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.4.0/garden-dev-cluster.template.yaml)).
+<!-- x-release-please-start-version -->
+Follow the link to the [Quick install](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?stackName=garden-dev-cluster&templateURL=https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.5.0/garden-dev-cluster.template.yaml) template ([View Template Source](https://garden-cfn-public-releases.s3.amazonaws.com/dev-cluster/0.5.0/garden-dev-cluster.template.yaml)).
 <!-- x-release-please-end -->
 
 #### Parameters
