@@ -148,7 +148,7 @@ export class GardenEKSDevCluster {
     blueprints.GenericClusterProvider.prototype["validateInput"] = () => {}
 
     const clusterProvider = new blueprints.GenericClusterProvider({
-      version: eks.KubernetesVersion.V1_24,
+      version: eks.KubernetesVersion.V1_27,
       mastersRole: blueprints.getResource(context => {
         return iam.Role.fromRoleArn(context.scope, "mastersRole", garden.mastersRoleARN)
       }),
