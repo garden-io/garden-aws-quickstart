@@ -4,13 +4,13 @@
   "description": "Garden development cluster CDK and CFN quickstart, batteries included.",
   "main": "src/index.ts",
   "dependencies": {
-    "@aws-quickstart/eks-blueprints": "=1.8.1",
+    "@aws-quickstart/eks-blueprints": "=1.14.1",
     "@segment/analytics-node": "^1.0.0-beta.26",
     "@types/aws-lambda": "^8.10.115",
     "aws-cdk-lib": "=2.81.0",
     "aws-lambda": "^1.0.7",
     "cdk": "^2.81.0-alpha.0",
-    "cdk-assets": "^2.81.0",
+    "cdk-assets": "^2.143.0",
     "constructs": "=10.2.39",
     "hasha": "^5.2.2",
     "pjson": "^1.0.9"
